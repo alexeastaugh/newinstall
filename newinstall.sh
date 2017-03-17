@@ -10,7 +10,9 @@ COLOUREX='\033[0m'
 if [[ $EUID -ne 0 ]]; then
     echo -e "\n$RED You are not root! Please re run as root or sudo. $COLOUREX\n"
     exit 1
-fi # Numix theme and icons
+fi 
+
+# Numix theme and icons
 if [ -f "/etc/apt/sources.list.d/numix-ubuntu-ppa-yakkety.list" ]; then
     echo -e "\n$GREEN ### Numix already installed ### $COLOUREX"
 else
@@ -19,7 +21,9 @@ else
     apt-get update
     apt-get install numix-gtk-theme numix-icon-theme-circle numix-folders
     echo -e "\n$GREEN ### Numix is now installed ### $COLOUREX"
-fi # Spotify
+fi 
+
+# Spotify
 if [ -x /usr/share/spotify/spotify ]; then
     echo -e "\n$GREEN ### Spotify already installed ### $COLOUREX"
 else
@@ -29,7 +33,9 @@ else
     apt-get update
     apt-get install spotify-client
     echo -e "\n$GREEN ### Spotify is now installed ### $COLOUREX"
-fi # Arc theme
+fi 
+
+# Arc theme
 if ! grep -q arc-theme /etc/apt/sources.list.d/*; then
     echo -e "\n$GREEN ### arc-theme already installed ### $COLOUREX"
 else
@@ -38,7 +44,9 @@ else
     sudo apt-get update
     sudo apt-get install arc-theme
     echo -e "\n$GREEN ### arc-theme is now installed ### $COLOUREX"
-fi # Etcher
+fi 
+
+# Etcher
 if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
     echo -e "\n$GREEN ### Etcher already installed ### $COLOUREX"
 else
@@ -46,3 +54,4 @@ else
     apt-get install etcher-electron
     echo "\n$GREEN ### Etcher is now installed ###$COLOUREX"
 fi
+
