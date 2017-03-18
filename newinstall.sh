@@ -11,6 +11,18 @@ if [[ $EUID -ne 0 ]]; then
     echo -e "\n$RED You are not root! Please re run as root or sudo. $COLOUREX\n"
     exit 1
 fi 
+# Monaco fonts
+if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
+    echo -e "\n$GREEN ### Monaco fonts are already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Monaco fonts ### $COLOUREX"
+    sudo mkdir -p /usr/share/fonts/truetype/ttf-monaco; cd /usr/share/fonts/truetype/ttf-monaco/
+    sudo wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf
+    sudo mkfontdir
+    cd /usr/share/fonts/truetype/
+    fc-cache
+    echo -e "\n$GREEN ### Monaco fonts are now installed ### $COLOUREX"
+fi
 
 # Numix theme and icons
 if [ -f "/etc/apt/sources.list.d/numix-ubuntu-ppa-yakkety.list" ]; then
@@ -52,6 +64,16 @@ if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
 else
     echo -e "\n$YELLOW ### Installing Etcher ### $COLOUREX"
     apt-get install etcher-electron
-    echo "\n$GREEN ### Etcher is now installed ###$COLOUREX"
+    echo "\n$GREEN ### Etcher is now installed ### $COLOUREX"
+fi
+
+# Remmina - rdp application for wimdows machines
+if [ -e "/usr/bin/remmina" ]; then
+    echo -e "\n$GREEN ### Remmina is already inmstalled ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Remmina ### $COLOUREX"
+    sudo apt-get -qq update
+    sudo apt-get -qq install remmina
+    echo -e "\n$GREEN ### Remmina is now installed ### $COLOUREX"
 fi
 
