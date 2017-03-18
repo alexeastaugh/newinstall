@@ -30,8 +30,8 @@ if [ -f "/etc/apt/sources.list.d/numix-ubuntu-ppa-yakkety.list" ]; then
 else
     echo -e "\n$YELLOW ### Installing Numix theme and icons ### $COLOUREX"
     add-apt-repository ppa:numix/ppa
-    apt-get update
-    apt-get install numix-gtk-theme numix-icon-theme-circle numix-folders
+    apt-get -qq update
+    apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders
     echo -e "\n$GREEN ### Numix is now installed ### $COLOUREX"
 fi 
 
@@ -42,8 +42,8 @@ else
     echo -e "\n$YELLOW ### Installing Spotify ### $COLOUREX"
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
     echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-    apt-get update
-    apt-get install spotify-client
+    apt-get -qq update
+    apt-get -qq install spotify-client
     echo -e "\n$GREEN ### Spotify is now installed ### $COLOUREX"
 fi 
 
@@ -53,8 +53,8 @@ if ! grep -q arc-theme /etc/apt/sources.list.d/*; then
 else
     echo -e "\n$YELLOW ### Installing arc-theme ### $COLOUREX"
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
-    sudo apt-get update
-    sudo apt-get install arc-theme
+    sudo apt-get -qq update
+    sudo apt-get -qq install arc-theme
     echo -e "\n$GREEN ### arc-theme is now installed ### $COLOUREX"
 fi 
 
