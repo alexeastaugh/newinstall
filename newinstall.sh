@@ -25,7 +25,7 @@ else
 fi
 
 # Numix theme and icons
-if [ -f "/etc/apt/sources.list.d/numix-ubuntu-ppa-yakkety.list" ]; then
+if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
     echo -e "\n$GREEN ### Numix already installed ### $COLOUREX"
 else
     echo -e "\n$YELLOW ### Installing Numix theme and icons ### $COLOUREX"
