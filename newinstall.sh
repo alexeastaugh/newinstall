@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Installs all my applications and tweaks on a new Ubuntu Gnome machine. 
+
 # variables
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -48,7 +49,7 @@ else
 fi 
 
 # Arc theme
-if ! grep -q arc-theme /etc/apt/sources.list.d/*; then
+if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
     echo -e "\n$GREEN ### arc-theme already installed ### $COLOUREX"
 else
     echo -e "\n$YELLOW ### Installing arc-theme ### $COLOUREX"
