@@ -65,7 +65,7 @@ if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
 else
     echo -e "\n$YELLOW ### Installing Etcher ### $COLOUREX"
     apt-get install etcher-electron
-    echo "\n$GREEN ### Etcher is now installed ### $COLOUREX"
+    echo -e "\n$GREEN ### Etcher is now installed ### $COLOUREX"
 fi
 
 # Remmina - rdp application for wimdows machines
