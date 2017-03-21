@@ -11,7 +11,12 @@ COLOUREX='\033[0m'
 if [[ $EUID -ne 0 ]]; then
     echo -e "\n$RED You are not root! Please re run as root or sudo. $COLOUREX\n"
     exit 1
-fi 
+fi
+
+# Quick installs
+sudo apt-get update
+sudo apt-get install vim git stow tmux 
+ 
 # Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
     echo -e "\n$GREEN ### Monaco fonts are already installed ### $COLOUREX"
@@ -32,7 +37,7 @@ else
     echo -e "\n$YELLOW ### Installing Numix theme and icons ### $COLOUREX"
     add-apt-repository ppa:numix/ppa
     apt-get -qq update
-    apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders
+    apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
     echo -e "\n$GREEN ### Numix is now installed ### $COLOUREX"
 fi 
 
@@ -53,7 +58,9 @@ if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
     echo -e "\n$GREEN ### arc-theme already installed ### $COLOUREX"
 else
     echo -e "\n$YELLOW ### Installing arc-theme ### $COLOUREX"
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
+    wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+    sudo apt-key add - < Release.key
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
     sudo apt-get -qq update
     sudo apt-get -qq install arc-theme
     echo -e "\n$GREEN ### arc-theme is now installed ### $COLOUREX"
@@ -64,6 +71,9 @@ if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
     echo -e "\n$GREEN ### Etcher already installed ### $COLOUREX"
 else
     echo -e "\n$YELLOW ### Installing Etcher ### $COLOUREX"
+    echo "deb https://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
+    sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
+    sudo apt-get update
     apt-get install etcher-electron
     echo -e "\n$GREEN ### Etcher is now installed ### $COLOUREX"
 fi
