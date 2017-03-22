@@ -18,7 +18,7 @@ fi
 function ssh_setup() {
     if [ -f /home/alex/.ssh/config ]; then
         sudo find /home/alex/.ssh -type d -exec chmod 700 {} \;
-        sudo find /home/alex/.ssh -type f -exec chmod 660 {} \;
+        sudo find /home/alex/.ssh -type f -exec chmod 600 {} \;
         echo -e "\n$GREEN ssh keys are installed and have correct permissions\n $CEXIT"
     else
         echo -e "\n$RED Please copy your ssh keys and config file to the .ssh dir\n $CEXIT"
