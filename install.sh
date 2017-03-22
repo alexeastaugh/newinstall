@@ -83,68 +83,68 @@ clone_dots
 apply_dots
 
 # Create projects dir
-echo -e "\n$GREEN Creating projects dir $CEXIT"
+echo -e "\n$YELLOW Creating projects dir $CEXIT\n"
 mkdir -p /home/$USER/projects >> $LOG 2>&1
 
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
-    echo -e "\n$GREEN Monaco fonts are already installed $CEXIT"
+    echo -e "$GREEN Monaco fonts are already installed $CEXIT"
 else
-    echo -e "\n$YELLOW Installing Monaco fonts $CEXIT"
+    echo -e "$YELLOW Installing Monaco fonts $CEXIT"
     sudo mkdir -p /usr/share/fonts/truetype/ttf-monaco; cd /usr/share/fonts/truetype/ttf-monaco/
     sudo wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf
     sudo mkfontdir
     cd /usr/share/fonts/truetype/
     fc-cache
-    echo -e "\n$GREEN Monaco fonts are now installed. System restart may be required $CEXIT"
+    echo -e "$GREEN Monaco fonts are now installed. System restart may be required $CEXIT"
 fi
 
 # Numix theme and icons
 if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
-    echo -e "\n$GREEN Numix already installed $CEXIT"
+    echo -e "$GREEN Numix already installed $CEXIT"
 else
-    echo -e "\n$YELLOW Installing Numix theme and icons $CEXIT"
+    echo -e "$YELLOW Installing Numix theme and icons $CEXIT"
     add-apt-repository ppa:numix/ppa
     apt-get -qq update
     apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
-    echo -e "\n$GREEN Numix is now installed $CEXIT"
+    echo -e "$GREEN Numix is now installed $CEXIT"
 fi 
 
 # Spotify
 if [ -x /usr/share/spotify/spotify ]; then
-    echo -e "\n$GREEN Spotify already installed $CEXIT"
+    echo -e "$GREEN Spotify already installed $CEXIT"
 else
-    echo -e "\n$YELLOW Installing Spotify $CEXIT"
+    echo -e "$YELLOW Installing Spotify $CEXIT"
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
     echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
     apt-get -qq update
     apt-get -qq install spotify-client
-    echo -e "\n$GREEN Spotify is now installed $CEXIT"
+    echo -e "$GREEN Spotify is now installed $CEXIT"
 fi
 
 # Arc theme
 if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
-    echo -e "\n$GREEN arc-theme already installed $CEXIT"
+    echo -e "$GREEN arc-theme already installed $CEXIT"
 else
-    echo -e "\n$YELLOW Installing arc-theme $CEXIT"
+    echo -e "$YELLOW Installing arc-theme $CEXIT"
     wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
     sudo apt-key add - < /tmp/Release.key
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
     sudo apt-get -qq update
     sudo apt-get -qq install arc-theme
-    echo -e "\n$GREEN arc-theme is now installed $CEXIT"
+    echo -e "$GREEN arc-theme is now installed $CEXIT"
 fi 
 
 # Etcher
 if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
-    echo -e "\n$GREEN Etcher already installed $CEXIT"
+    echo -e "$GREEN Etcher already installed $CEXIT"
 else
-    echo -e "\n$YELLOW Installing Etcher $CEXIT"
+    echo -e "$YELLOW Installing Etcher $CEXIT"
     echo "deb https://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
     sudo apt-get update
     apt-get install etcher-electron
-    echo -e "\n$GREEN Etcher is now installed $CEXIT"
+    echo -e "$GREEN Etcher is now installed $CEXIT"
 fi
 
 echo -e "\n$GREEN $USER your laptop is now setup! $CEXIT"
