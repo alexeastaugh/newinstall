@@ -122,18 +122,18 @@ else
     echo -e "$GREEN Spotify is now installed $CEXIT"
 fi
 
-# Arc theme
-if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
-    echo -e "$GREEN arc-theme already installed $CEXIT"
-else
-    echo -e "$YELLOW Installing arc-theme $CEXIT"
-    wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
-    sudo apt-key add - < /tmp/Release.key
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-    sudo apt-get -qq update
-    sudo apt-get -qq install arc-theme
-    echo -e "$GREEN arc-theme is now installed $CEXIT"
-fi 
+# Arc theme - Need to check for version of Ubuntu
+#if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
+   # echo -e "$GREEN arc-theme already installed $CEXIT"
+#else
+   # echo -e "$YELLOW Installing arc-theme $CEXIT"
+   # wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
+   # sudo apt-key add - < /tmp/Release.key
+   # sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+   # sudo apt-get -qq update
+   # sudo apt-get -qq install arc-theme
+   # echo -e "$GREEN arc-theme is now installed $CEXIT"
+#fi 
 
 # Etcher
 if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
