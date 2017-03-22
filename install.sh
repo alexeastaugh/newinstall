@@ -6,6 +6,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 CEXIT='\033[0m' 
 
+RELEASE=`lsb_release -r | sed -e 's/Release:\s//'`
 LOG=/tmp/new_install.log
 
 # check for root or sudo
@@ -34,7 +35,11 @@ read -p " Please enter your email address: " EMAILADDRESS
 echo -e "\n$GREEN Hello there $NAME, shall we begin....\n $CEXIT"
 sleep 2
 
-sudo apt update -qq
+# Create projects dir
+echo -e "$YELLOW Creating projects dir $CEXIT"
+mkdir -p /home/$USER/projects >> $LOG 2>&1
+
+sudo apt -qq update
 
 # Install apt packages
 function install_package() {
@@ -82,11 +87,8 @@ function apply_dots() {
 clone_dots
 apply_dots
 
-# Create projects dir
-echo -e "\n$YELLOW Creating projects dir $CEXIT\n"
-mkdir -p /home/$USER/projects >> $LOG 2>&1
+# Install Monaco fonts:w!
 
-# Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
     echo -e "$GREEN Monaco fonts are already installed $CEXIT"
 else
@@ -122,18 +124,24 @@ else
     echo -e "$GREEN Spotify is now installed $CEXIT"
 fi
 
-# Arc theme - Need to check for version of Ubuntu
-#if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
-   # echo -e "$GREEN arc-theme already installed $CEXIT"
-#else
-   # echo -e "$YELLOW Installing arc-theme $CEXIT"
-   # wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
-   # sudo apt-key add - < /tmp/Release.key
-   # sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-   # sudo apt-get -qq update
-   # sudo apt-get -qq install arc-theme
-   # echo -e "$GREEN arc-theme is now installed $CEXIT"
-#fi 
+function arc_install() {
+    if [ $RELEASE != "16.10" ]; then
+        echo -e "$YELLOW Installing arc-theme from PPA $CEXIT"
+        wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
+        sudo apt-key add - < /tmp/Release.key
+        sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+        sudo apt-get -qq update
+        sudo apt-get -qq install arc-theme
+        echo -e "$GREEN arc-theme is now installed $CEXIT"
+    else
+        echo -e "$YELLOW Installing arc-theme using apt install $CEXIT"
+        sudo apt -qq update
+        sudo apt -qq install arc-theme
+        echo -e "$GREEN arc-theme is now installed $CEXIT"
+    fi
+}
+
+arc_install 
 
 # Etcher
 if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
