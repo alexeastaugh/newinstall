@@ -84,7 +84,65 @@ apply_dots
 echo -e "\n$GREEN Creating projects dir $CEXIT"
 mkdir -p /home/$USER/projects >> $LOG 2>&1
 
-# TODO
-# package installs with PPA's
+# Monaco fonts
+if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
+    echo -e "\n$GREEN ### Monaco fonts are already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Monaco fonts ### $COLOUREX"
+    sudo mkdir -p /usr/share/fonts/truetype/ttf-monaco; cd /usr/share/fonts/truetype/ttf-monaco/
+    sudo wget http://www.gringod.com/wp-upload/software/Fonts/Monaco_Linux.ttf
+    sudo mkfontdir
+    cd /usr/share/fonts/truetype/
+    fc-cache
+    echo -e "\n$GREEN ### Monaco fonts are now installed ### $COLOUREX"
+fi
+
+# Numix theme and icons
+if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
+    echo -e "\n$GREEN ### Numix already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Numix theme and icons ### $COLOUREX"
+    add-apt-repository ppa:numix/ppa
+    apt-get -qq update
+    apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
+    echo -e "\n$GREEN ### Numix is now installed ### $COLOUREX"
+fi 
+
+# Spotify
+if [ -x /usr/share/spotify/spotify ]; then
+    echo -e "\n$GREEN ### Spotify already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Spotify ### $COLOUREX"
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    apt-get -qq update
+    apt-get -qq install spotify-client
+    echo -e "\n$GREEN ### Spotify is now installed ### $COLOUREX"
+fi
+
+# Arc theme
+if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
+    echo -e "\n$GREEN ### arc-theme already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing arc-theme ### $COLOUREX"
+    wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+    sudo apt-key add - < Release.key
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+    sudo apt-get -qq update
+    sudo apt-get -qq install arc-theme
+    echo -e "\n$GREEN ### arc-theme is now installed ### $COLOUREX"
+fi 
+
+# Etcher
+if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
+    echo -e "\n$GREEN ### Etcher already installed ### $COLOUREX"
+else
+    echo -e "\n$YELLOW ### Installing Etcher ### $COLOUREX"
+    echo "deb https://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
+    sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
+    sudo apt-get update
+    apt-get install etcher-electron
+    echo -e "\n$GREEN ### Etcher is now installed ### $COLOUREX"
+fi
 
 echo -e "\n$GREEN Everything is now setup! $CEXIT"
