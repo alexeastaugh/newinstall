@@ -55,7 +55,7 @@ install_package 'get-iplayer'
 install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
 
-# Clone dotfiles repo
+# Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
     if [ ! -d /home/alex/dotfiles ]; then
         git clone git@github.com:alexeastaugh/dotfiles.git /home/alex/dotfiles
