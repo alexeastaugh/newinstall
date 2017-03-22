@@ -36,6 +36,7 @@ ssh_setup
 
 # Install apt packages
 function install_package() {
+    sudo apt update -qq
     if dpkg-query --list | grep -m1 -q "$1"; then
         echo -e "$GREEN $1 is already installed $CEXIT"
     else
@@ -94,7 +95,7 @@ else
     sudo mkfontdir
     cd /usr/share/fonts/truetype/
     fc-cache
-    echo -e "\n$GREEN ### Monaco fonts are now installed ### $CEXIT"
+    echo -e "\n$GREEN ### Monaco fonts are now installed. System restart may be required ### $CEXIT"
 fi
 
 # Numix theme and icons
