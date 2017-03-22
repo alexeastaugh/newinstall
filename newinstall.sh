@@ -11,7 +11,7 @@ CEXIT='\033[0m'
 # check for root or sudo
 if [[ $EUID -ne 0 ]]; then
     echo -e "\n$RED You are not root! Please re run as root or sudo. $CEXIT\n"
-    exit 1 >> $LOG 2>&1
+    exit 1
 fi
 
 # SSH check and setup
@@ -22,21 +22,22 @@ function ssh_setup() {
         echo -e "\n$GREEN ssh keys are installed and have correct permissions\n $CEXIT"
     else
         echo -e "\n$RED Please copy your ssh keys and config file to the .ssh dir\n $CEXIT"
-        exit 1 >> $LOG 2>&1
+        exit 1
     fi
 }
 
 ssh_setup
 
 # User details for .gitconfig
-#read -p "Please enter your full name:" NAME
-#read -p "Please enter your email address:" EMAILADDRESS
-#echo -e "\n$GREEN Hello there $NAME, shall we begin....\n $CEXIT"
-#sleep 5
+read -p "Please enter your full name:" NAME
+read -p "Please enter your email address:" EMAILADDRESS
+echo -e "\n$GREEN Hello there $NAME, shall we begin....\n $CEXIT"
+sleep 5
+
+sudo apt update -qq
 
 # Install apt packages
 function install_package() {
-    sudo apt update -qq
     if dpkg-query --list | grep -m1 -q "$1"; then
         echo -e "$GREEN $1 is already installed $CEXIT"
     else
@@ -126,8 +127,8 @@ if ls /etc/apt/sources.list.d/arc-theme* > /dev/null 2>&1; then
     echo -e "\n$GREEN ### arc-theme already installed ### $CEXIT"
 else
     echo -e "\n$YELLOW ### Installing arc-theme ### $CEXIT"
-    wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
-    sudo apt-key add - < Release.key
+    wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
+    sudo apt-key add - < /tmp/Release.key
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
     sudo apt-get -qq update
     sudo apt-get -qq install arc-theme
