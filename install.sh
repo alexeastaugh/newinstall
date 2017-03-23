@@ -61,6 +61,7 @@ install_package 'youtube-dl'
 install_package 'get-iplayer'
 install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
+install_package 'xfonts-terminus'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -87,7 +88,7 @@ function apply_dots() {
 clone_dots
 apply_dots
 
-# Install Monaco fonts:w!
+# Install Monaco fonts
 
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
     echo -e "$GREEN Monaco fonts are already installed $CEXIT"
