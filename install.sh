@@ -7,6 +7,7 @@ RED='\033[0;31m'
 CEXIT='\033[0m' 
 
 RELEASE=`lsb_release -r | sed -e 's/Release:\s//'`
+ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
 # check for root or sudo
@@ -36,8 +37,16 @@ echo -e "\n$GREEN Hello there $NAME, shall we begin....\n $CEXIT"
 sleep 2
 
 # Create projects dir
-echo -e "$YELLOW Creating projects dir $CEXIT"
-mkdir -p /home/$USER/projects >> $LOG 2>&1
+function project_dir() {
+    if [ -d /home/alex/projects ]; then
+        echo -e "$GREEN Projects dir already created $CEXIT"
+    else
+        echo -e "$YELLOW Creating projects dir $CEXIT"
+    mkdir -p /home/$USER/projects >> $LOG 2>&1
+    fi
+}
+
+project_dir
 
 sudo apt -qq update
 
@@ -127,18 +136,22 @@ fi
 
 function arc_install() {
     if [ $RELEASE != "16.10" ]; then
-        echo -e "$YELLOW Installing arc-theme from PPA $CEXIT"
-        wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
-        sudo apt-key add - < /tmp/Release.key
-        sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-        sudo apt-get -qq update
-        sudo apt-get -qq install arc-theme
-        echo -e "$GREEN arc-theme is now installed $CEXIT"
+        if [ -s "$ARCFILE" ]; then
+            echo -e "$GREEN arc-theme from PPA is already installed $CEXIT"
+        else
+            echo -e "$YELLOW Installing arc-theme from PPA $CEXIT"
+            wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
+            sudo apt-key add - < /tmp/Release.key
+            sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+            sudo apt-get -qq update
+            sudo apt-get -qq install arc-theme
+            echo -e "$GREEN arc-theme from PPA is now installed $CEXIT"
+        fi
     else
         echo -e "$YELLOW Installing arc-theme using apt install $CEXIT"
         sudo apt -qq update
         sudo apt -qq install arc-theme
-        echo -e "$GREEN arc-theme is now installed $CEXIT"
+        echo -e "$GREEN arc-theme from apt is now installed $CEXIT"
     fi
 }
 
