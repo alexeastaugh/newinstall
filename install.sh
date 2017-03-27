@@ -10,6 +10,10 @@ RELEASE=`lsb_release -r | sed -e 's/Release:\s//'`
 ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
+# Update repos
+echo -e "\n$YELLOW Updating repos.... $CEXIT\n"
+sudo apt -qq update
+
 # check for root or sudo
 #if [[ $EUID -ne 0 ]]; then
 #    echo -e "\n$RED You are not root! Please re run as root or sudo. $CEXIT\n"
@@ -47,8 +51,6 @@ function project_dir() {
 }
 
 project_dir
-
-sudo apt -qq update
 
 # Install apt packages
 function install_package() {
@@ -169,4 +171,5 @@ else
     echo -e "$GREEN Etcher is now installed $CEXIT"
 fi
 
-echo -e "\n$GREEN $USER your laptop is now setup! $CEXIT"
+echo -e "\n$GREEN $USER your laptop is now setup! $CEXIT\n\
+$YELLOW Remember to manually switch to the arc theme and select your fonts!\n $CEXIT"
