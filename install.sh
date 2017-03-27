@@ -11,16 +11,16 @@ ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
 # check for root or sudo
-if [[ $EUID -ne 0 ]]; then
-    echo -e "\n$RED You are not root! Please re run as root or sudo. $CEXIT\n"
-    exit 1
-fi
+#if [[ $EUID -ne 0 ]]; then
+#    echo -e "\n$RED You are not root! Please re run as root or sudo. $CEXIT\n"
+#    exit 1
+#fi
 
 # SSH check and setup
 function ssh_setup() {
-    if [ -f /home/alex/.ssh/config ]; then
-        sudo find /home/alex/.ssh -type d -exec chmod 700 {} \;
-        sudo find /home/alex/.ssh -type f -exec chmod 600 {} \;
+    if [ -f /home/$(whoami)/.ssh/config ]; then
+        sudo find /home/$(whoami)/.ssh -type d -exec chmod 700 {} \;
+        sudo find /home/$(whoami)/.ssh -type f -exec chmod 600 {} \;
         echo -e "\n$GREEN ssh keys are installed and have correct permissions\n $CEXIT"
     else
         echo -e "\n$RED Please copy your ssh keys and config file to the .ssh dir\n $CEXIT"
@@ -38,7 +38,7 @@ sleep 2
 
 # Create projects dir
 function project_dir() {
-    if [ -d /home/alex/projects ]; then
+    if [ -d /home/$(whoami)/projects ]; then
         echo -e "$GREEN Projects dir already created $CEXIT"
     else
         echo -e "$YELLOW Creating projects dir $CEXIT"
@@ -74,8 +74,8 @@ install_package 'xfonts-terminus'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
-    if [ ! -d /home/alex/dotfiles ]; then
-        git clone git@github.com:alexeastaugh/dotfiles.git /home/alex/dotfiles
+    if [ ! -d /home/$(whoami)/dotfiles ]; then
+        git clone git@github.com:$(whoami)eastaugh/dotfiles.git /home/$(whoami)/dotfiles
     fi
     git config --global user.name "$NAME"
     git config --global user.email $EMAILADDRESS
@@ -84,12 +84,12 @@ function clone_dots() {
 
 # Apply dots
 function apply_dots() {
-    if [ -f /home/alex/.bashrc.backup ]; then    
-        cd /home/alex/dotfiles
+    if [ -f /home/$(whoami)/.bashrc.backup ]; then    
+        cd /home/$(whoami)/dotfiles
         stow bash vim tmux mpv moc
     else
-        mv /home/alex/.bashrc /home/alex/.bashrc.backup >> $LOG 2>&1
-        cd /home/alex/dotfiles
+        mv /home/$(whoami)/.bashrc /home/$(whoami)/.bashrc.backup >> $LOG 2>&1
+        cd /home/$(whoami)/dotfiles
         stow bash vim tmux mpv moc
     fi
 }
