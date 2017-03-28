@@ -64,8 +64,7 @@ function install_package() {
 
 install_package 'vim'
 install_package 'stow'
-install_package 'git'
-install_package 'htop'
+install_package 'git' install_package 'htop'
 install_package 'tmux'
 install_package 'remmina'
 install_package 'youtube-dl'
@@ -150,10 +149,14 @@ function arc_install() {
             echo -e "$GREEN arc-theme from PPA is now installed $CEXIT"
         fi
     else
-        echo -e "$YELLOW Installing arc-theme using apt install $CEXIT"
-        sudo apt -qq update
-        sudo apt -qq install arc-theme
-        echo -e "$GREEN arc-theme from apt is now installed $CEXIT"
+        if dpkg-query --list | grep -m1 "arc-theme"; then
+            echo -e "$GREEN arc-theme from apt source already intalled $CEXIT"
+        else
+            echo -e "$YELLOW Installing arc-theme using apt install $CEXIT"
+            sudo apt -qq update
+            sudo apt -qq install arc-theme
+            echo -e "$GREEN arc-theme from apt is now installed $CEXIT"
+        fi
     fi
 }
 
