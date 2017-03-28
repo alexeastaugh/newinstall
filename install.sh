@@ -153,7 +153,6 @@ function arc_install() {
             echo -e "$GREEN arc-theme from apt source already intalled $CEXIT"
         else
             echo -e "$YELLOW Installing arc-theme using apt install $CEXIT"
-            sudo apt -qq update
             sudo apt -qq install arc-theme
             echo -e "$GREEN arc-theme from apt is now installed $CEXIT"
         fi
