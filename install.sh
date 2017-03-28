@@ -14,12 +14,6 @@ LOG=/tmp/new_install.log
 echo -e "\n$YELLOW Updating repos.... $CEXIT\n"
 sudo apt -qq update
 
-# check for root or sudo
-#if [[ $EUID -ne 0 ]]; then
-#    echo -e "\n$RED You are not root! Please re run as root or sudo. $CEXIT\n"
-#    exit 1
-#fi
-
 # SSH check and setup
 function ssh_setup() {
     if [ -f /home/$(whoami)/.ssh/config ]; then
