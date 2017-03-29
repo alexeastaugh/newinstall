@@ -110,9 +110,9 @@ if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
     echo -e "${GREEN}Numix already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
-    add-apt-repository ppa:numix/ppa
-    apt-get -qq update
-    apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
+    sudo add-apt-repository ppa:numix/ppa
+    sudo apt-get -qq update
+    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi 
 
@@ -121,10 +121,10 @@ if [ -x /usr/share/spotify/spotify ]; then
     echo -e "${GREEN}Spotify already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Spotify${CEXIT}"
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-    apt-get -qq update
-    apt-get -qq install spotify-client
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    sudo echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt-get -qq update
+    sudo apt-get -qq install spotify-client
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
 fi
 
@@ -134,7 +134,7 @@ function arc_install() {
             echo -e "${GREEN}arc-theme from PPA is already installed${CEXIT}"
         else
             echo -e "${YELLOW}Installing arc-theme from PPA${CEXIT}"
-            wget -O http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key /tmp/Release.key
+            sudo wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key --output-document=/tmp/Release.key
             sudo apt-key add - < /tmp/Release.key
             sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
             sudo apt-get -qq update
@@ -162,7 +162,7 @@ else
     echo "deb https://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
     sudo apt-get update
-    apt-get install etcher-electron
+    sudo apt-get install etcher-electron
     echo -e "${GREEN}Etcher is now installed${CEXIT}"
 fi
 
