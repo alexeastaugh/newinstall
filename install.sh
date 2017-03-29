@@ -48,7 +48,7 @@ project_dir
 
 # Install apt packages
 function install_package() {
-    if dpkg-query --list | grep -m1 -q "$1"; then
+    if dpkg-query --list | sed 's/ii  //g' | grep -m1 ^"$1"; then
         echo -e "${GREEN}$1 is already installed${CEXIT}"
     else
         echo -e "${YELLOW}Installing $1${CEXIT}"
