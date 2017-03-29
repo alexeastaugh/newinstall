@@ -58,7 +58,8 @@ function install_package() {
 
 install_package 'vim'
 install_package 'stow'
-install_package 'git' install_package 'htop'
+install_package 'git'
+install_package 'htop'
 install_package 'tmux'
 install_package 'remmina'
 install_package 'youtube-dl'
