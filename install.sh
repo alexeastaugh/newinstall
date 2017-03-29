@@ -159,7 +159,7 @@ if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
     echo -e "${GREEN}Etcher already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Etcher${CEXIT}"
-    echo "deb https://dl.bintray.com/resin-io/debian stable etcher" > /etc/apt/sources.list.d/etcher.list
+    echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee --append /etc/apt/sources.list.d/etcher.list
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
     sudo apt-get update
     sudo apt-get install etcher-electron
