@@ -167,5 +167,17 @@ else
     echo -e "${GREEN}Etcher is now installed${CEXIT}"
 fi
 
+# Install Google Chrome
+if [ -f "/usr/bin/google-chrome" ];then
+    echo -e "${GREEN}Google Chrome is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Google Chrome${CEXIT}"
+    sudo cd /home/$(whoami)/Downloads
+    sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i /home/$(whoami)/Downloads/google-chrome-*.deb
+    sudo apt-get -qq install -f
+    echo -e "${GREEN}Google Chrome is now installed${CEXIT}"
+fi
+
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to the arc theme and select your fonts!\n${CEXIT}"
