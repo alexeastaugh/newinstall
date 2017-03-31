@@ -29,10 +29,8 @@ function ssh_setup() {
 ssh_setup
 
 # User details for .gitconfig
-echo -e "${GREEN}Please enter your full name:${CEXIT} \c"
-read NAME
-read -e "\n${GREEN}Please enter your email address:${CEXIT} \c"
-read EMAILADDRESS
+read -p "Please enter your full name: " NAME
+read -p "Please enter your email address: " EMAILADDRESS
 echo -e "\n${GREEN}Hello there ${NAME}, shall we begin....\n${CEXIT}"
 sleep 2
 
@@ -66,6 +64,7 @@ install_package 'tmux'
 install_package 'remmina'
 install_package 'youtube-dl'
 install_package 'get-iplayer'
+install_package 'moc'
 install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
 install_package 'xfonts-terminus'
