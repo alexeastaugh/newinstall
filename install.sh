@@ -12,7 +12,7 @@ LOG=/tmp/new_install.log
 
 # Update repos
 echo -e "\n${YELLOW}Updating repos.... ${CEXIT}\n"
-sudo apt -qq update
+sudo apt update >/dev/null 2>&1
 
 # SSH check and setup
 function ssh_setup() {
@@ -21,7 +21,7 @@ function ssh_setup() {
         sudo find /home/$(whoami)/.ssh -type f -exec chmod 600 {} \;
         echo -e "\n${GREEN}ssh keys are installed and have correct permissions\n${CEXIT}"
     else
-        echo -e "\n${RED}Please copy your ssh keys and config file to the .ssh dir\n${CEXIT}"
+        echo -e "\n${RED}Please copy your ssh keys and config file to the .ssh dir${CEXIT}"
         exit 1
     fi
 }
@@ -64,6 +64,7 @@ install_package 'tmux'
 install_package 'remmina'
 install_package 'youtube-dl'
 install_package 'get-iplayer'
+install_package 'moc'
 install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
 install_package 'xfonts-terminus'
@@ -112,7 +113,7 @@ if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
 else
     echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
     sudo add-apt-repository ppa:numix/ppa
-    sudo apt-get -qq update
+    sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi 
@@ -124,7 +125,7 @@ else
     echo -e "${YELLOW}Installing Spotify${CEXIT}"
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
     sudo echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt-get -qq update
+    sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install spotify-client
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
 fi
@@ -138,7 +139,7 @@ function arc_install() {
             sudo wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key --output-document=/tmp/Release.key
             sudo apt-key add - < /tmp/Release.key
             sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-            sudo apt-get -qq update
+            sudo apt-get update >/dev/null 2>&1
             sudo apt-get -qq install arc-theme
             echo -e "${GREEN}arc-theme from PPA is now installed${CEXIT}"
         fi
@@ -162,7 +163,7 @@ else
     echo -e "${YELLOW}Installing Etcher${CEXIT}"
     echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee --append /etc/apt/sources.list.d/etcher.list
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-    sudo apt-get update
+    sudo apt-get update >/dev/null 2>&1
     sudo apt-get install etcher-electron
     echo -e "${GREEN}Etcher is now installed${CEXIT}"
 fi
@@ -172,10 +173,11 @@ if [ -f "/usr/bin/google-chrome" ];then
     echo -e "${GREEN}Google Chrome is already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Google Chrome${CEXIT}"
-    sudo cd /home/$(whoami)/Downloads
-    sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg -i /home/$(whoami)/Downloads/google-chrome-*.deb
-    sudo apt-get -qq install -f
+    sudo cd /home/$(whoami)/Downloads &&
+    sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+    sudo dpkg -i /home/$(whoami)/Downloads/google-chrome-*.deb &&
+    sudo apt-get -qq install -f &&
+    sudo rm -f /home/$(whoami)/Downloads/google-chrome-*.deb
     echo -e "${GREEN}Google Chrome is now installed${CEXIT}"
 fi
 
