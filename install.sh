@@ -179,5 +179,11 @@ else
     echo -e "${GREEN}Google Chrome is now installed${CEXIT}"
 fi
 
+# Install Dropbox
+#if
+#else
+#fi
+
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
-${YELLOW}Remember to manually switch to the arc theme and select your fonts!\n${CEXIT}"
+${YELLOW}Remember to manually switch to the arc theme and select your fonts! \
+Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
