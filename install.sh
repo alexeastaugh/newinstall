@@ -169,7 +169,7 @@ else
 fi
 
 # Install Google Chrome
-if [ -f "/usr/bin/google-chrome" ];then
+if [ -f "/usr/bin/google-chrome" ]; then
     echo -e "${GREEN}Google Chrome is already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Google Chrome${CEXIT}"
@@ -182,9 +182,13 @@ else
 fi
 
 # Install Dropbox
-#if
-#else
-#fi
+if [ -f ~/.dropbox-dist/dropboxd ]; then
+    echo -e "${GREEN}Dropbox is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Dropbox${CEXIT}"
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+    echo -e "${GREEN}Dropbox is now installed${CEXIT}"
+fi
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to the arc theme and select your fonts! \
