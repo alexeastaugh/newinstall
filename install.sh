@@ -62,7 +62,7 @@ install_package 'git'
 install_package 'htop'
 install_package 'tmux'
 install_package 'remmina'
-install_package 'youtube-dl'
+#install_package 'youtube-dl' Probably better to install from source for the latest version. Too many issues from the package manager.
 install_package 'get-iplayer'
 install_package 'moc'
 install_package 'network-manager-openvpn'
