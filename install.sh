@@ -62,7 +62,6 @@ install_package 'git'
 install_package 'htop'
 install_package 'tmux'
 install_package 'remmina'
-#install_package 'youtube-dl' Probably better to install from source for the latest version. Too many issues from the package manager.
 install_package 'get-iplayer'
 install_package 'moc'
 install_package 'network-manager-openvpn'
@@ -188,6 +187,16 @@ else
     echo -e "${YELLOW}Installing Dropbox${CEXIT}"
     cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
     echo -e "${GREEN}Dropbox is now installed${CEXIT}"
+fi
+
+# Install youtube-dl
+if [ -f /usr/local/bin/youtube-dl ]; then
+    echo -e "${GREEN}youtube-dl is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing youtube-dl${CEXIT}"
+    sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+    sudo chmod a+rx /usr/local/bin/youtube-dl
+    echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
 fi
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
