@@ -6,7 +6,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 CEXIT='\033[0m' 
 
-RELEASE=`lsb_release -r | sed -e 's/Release:\s//'`
+RELEASE=`lsb_release -c | sed -e 's/Codename:\s//'`
 ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
@@ -130,7 +130,7 @@ else
 fi
 
 function arc_install() {
-    if [ ${RELEASE} != "16.10" ]; then
+    if [ ${RELEASE} != "yakkety" ]; then
         if [ -s "${ARCFILE}" ]; then
             echo -e "${GREEN}arc-theme from PPA is already installed${CEXIT}"
         else
