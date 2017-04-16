@@ -67,6 +67,7 @@ install_package 'moc'
 install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
 install_package 'xfonts-terminus'
+install_package 'scrot'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -198,6 +199,8 @@ else
     sudo chmod a+rx /usr/local/bin/youtube-dl
     echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
 fi
+
+# Install Virtualbox
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to the arc theme and select your fonts! \
