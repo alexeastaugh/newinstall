@@ -164,7 +164,7 @@ else
     echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee --append /etc/apt/sources.list.d/etcher.list
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
     sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install etcher-electron
+    sudo apt-get install -qq etcher-electron
     echo -e "${GREEN}Etcher is now installed${CEXIT}"
 fi
 
@@ -201,6 +201,17 @@ else
 fi
 
 # Install Virtualbox
+if [ -f /usr/bin/virtualbox ]; then
+    echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing VirtualBox${CEXIT}"
+    echo "deb http://download.virtualbox.org/virtualbox/debian ${RELEASE} contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
+    sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+    sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq virtualbox-5.1
+    echo -e "${GREEN}VirtualBox is now installed${CEXIT}"
+fi
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to the arc theme and select your fonts! \
