@@ -68,6 +68,7 @@ install_package 'network-manager-openvpn'
 install_package 'network-manager-openvpn-gnome'
 install_package 'xfonts-terminus'
 install_package 'scrot'
+install_package 'nautilus-dropbox'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
