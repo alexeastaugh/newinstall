@@ -61,7 +61,6 @@ install_package 'stow'
 install_package 'git'
 install_package 'htop'
 install_package 'tmux'
-install_package 'remmina'
 install_package 'get-iplayer'
 install_package 'moc'
 install_package 'network-manager-openvpn'
@@ -132,6 +131,7 @@ else
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
 fi
 
+# Arc theme install
 function arc_install() {
     if [ ${RELEASE} != "yakkety" ]; then
         if [ -s "${ARCFILE}" ]; then
@@ -157,6 +157,17 @@ function arc_install() {
 }
 
 arc_install 
+
+# Remmina install
+if [ -f "/etc/apt/sources.list.d/remmina-ppa-team-ubuntu-remmina-next-xenial.list" ]; then
+    echo -e "${GREEN}Remmina already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Remmina${CEXIT}"
+    sudo add-apt-repository ppa:remmina-ppa-team/remmina-next
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq  remmina
+    echo -e "${GREEN}Remmina is now installed${CEXIT}"
+fi
 
 # Etcher
 if [ -f "/etc/apt/sources.list.d/etcher.list" ]; then
