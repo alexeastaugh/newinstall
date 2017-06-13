@@ -69,6 +69,7 @@ install_package 'xfonts-terminus'
 install_package 'scrot'
 install_package 'nautilus-dropbox'
 install_package 'mpv'
+install_package 'tree'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
