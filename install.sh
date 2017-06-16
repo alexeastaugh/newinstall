@@ -70,6 +70,7 @@ install_package 'scrot'
 install_package 'nautilus-dropbox'
 install_package 'mpv'
 install_package 'tree'
+install_package 'nmap'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
