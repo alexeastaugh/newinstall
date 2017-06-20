@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Installs all my applications and tweaks on a new Ubuntu Gnome machine. 
+# Installs all my applications and tweaks on a new Ubuntu Gnome machine.
 
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 RED='\033[0;31m'
-CEXIT='\033[0m' 
+CEXIT='\033[0m'
 
 RELEASE=`lsb_release -c | sed -e 's/Codename:\s//'`
 ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
@@ -84,7 +84,7 @@ function clone_dots() {
 
 # Apply dots
 function apply_dots() {
-    if [ -f /home/$(whoami)/.bashrc.backup ]; then    
+    if [ -f /home/$(whoami)/.bashrc.backup ]; then
         cd /home/$(whoami)/dotfiles
         stow bash vim tmux mpv moc
     else
@@ -119,7 +119,7 @@ else
     sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
     echo -e "${GREEN}Numix is now installed${CEXIT}"
-fi 
+fi
 
 # Spotify
 if [ -x /usr/share/spotify/spotify ]; then
@@ -158,10 +158,10 @@ function arc_install() {
     fi
 }
 
-arc_install 
+arc_install
 
 # Remmina install
-if [ -f "/etc/apt/sources.list.d/remmina-ppa-team-ubuntu-remmina-next-xenial.list" ]; then
+if [ -f "/usr/bin/remmina" ]; then
     echo -e "${GREEN}Remmina already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Remmina${CEXIT}"
@@ -216,7 +216,7 @@ else
 fi
 
 # Install Virtualbox
-if [ -L /usr/bin/virtualbox ]; then
+if [ -f /usr/bin/virtualbox ]; then
     echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing VirtualBox${CEXIT}"
