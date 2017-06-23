@@ -71,6 +71,7 @@ install_package 'nautilus-dropbox'
 install_package 'mpv'
 install_package 'tree'
 install_package 'nmap'
+install_package 'variety'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
