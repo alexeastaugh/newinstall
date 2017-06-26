@@ -1,7 +1,7 @@
 # newinstall
 
-Only works on Ubuntu 16.04 LTS right now. Also its specific to my ssh keys so needs tweaking if you want to copy it.
+Only tested on Ubuntu 16.{04,10}
 
-Installs all packages and dotfiles on a new Ubuntu laptop
+Installs all my packages and dotfiles on a new Ubuntu laptop
 
-You only need to add your ssh keys and config file to the ~/.ssh dir
+Add ssh keys and config file to the `~/.ssh` dir
