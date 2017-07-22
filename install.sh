@@ -72,6 +72,7 @@ install_package 'mpv'
 install_package 'tree'
 install_package 'nmap'
 install_package 'corebird'
+install_package 'arc-theme'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -134,32 +135,34 @@ else
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
 fi
 
-# Arc theme install
-function arc_install() {
-    if [ ${RELEASE} != "yakkety" ]; then
-        if [ -s "${ARCFILE}" ]; then
-            echo -e "${GREEN}arc-theme from PPA is already installed${CEXIT}"
-        else
-            echo -e "${YELLOW}Installing arc-theme from PPA${CEXIT}"
-            sudo wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key --output-document=/tmp/Release.key
-            sudo apt-key add - < /tmp/Release.key
-            sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-            sudo apt-get update >/dev/null 2>&1
-            sudo apt-get -qq install arc-theme
-            echo -e "${GREEN}arc-theme from PPA is now installed${CEXIT}"
-        fi
-    else
-        if dpkg-query --list | grep -m1 "arc-theme" > /dev/null; then
-            echo -e "${GREEN}arc-theme from apt source already intalled${CEXIT}"
-        else
-            echo -e "${YELLOW}Installing arc-theme using apt install${CEXIT}"
-            sudo apt -qq install arc-theme
-            echo -e "${GREEN}arc-theme from apt is now installed${CEXIT}"
-        fi
-    fi
-}
+# Need to adjust this so it only installs via PPA if Ubuntu version < 16.10 otherwise use apt. Using install_package functio for now while I test on 17.04 zesty
 
-arc_install
+# Arc theme install
+#function arc_install() {
+#    if [ ${RELEASE} != "yakkety" ]; then
+#        if [ -s "${ARCFILE}" ]; then
+#            echo -e "${GREEN}arc-theme from PPA is already installed${CEXIT}"
+#        else
+#            echo -e "${YELLOW}Installing arc-theme from PPA${CEXIT}"
+#            sudo wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key --output-document=/tmp/Release.key
+#            sudo apt-key add - < /tmp/Release.key
+#            sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+#            sudo apt-get update >/dev/null 2>&1
+#            sudo apt-get -qq install arc-theme
+#            echo -e "${GREEN}arc-theme from PPA is now installed${CEXIT}"
+#        fi
+#    else
+#        if dpkg-query --list | grep -m1 "arc-theme" > /dev/null; then
+#            echo -e "${GREEN}arc-theme from apt source already intalled${CEXIT}"
+#        else
+#            echo -e "${YELLOW}Installing arc-theme using apt install${CEXIT}"
+#            sudo apt -qq install arc-theme
+#            echo -e "${GREEN}arc-theme from apt is now installed${CEXIT}"
+#        fi
+#    fi
+#}
+
+#arc_install
 
 # Remmina install
 if [ -f "/usr/bin/remmina" ]; then
