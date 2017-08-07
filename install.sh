@@ -137,7 +137,7 @@ fi
 
 # Install Adapta theme
 if ls /etc/apt/sources.list.d/tista-ubuntu-adapta-xenial.list > /dev/null 2>&1; then
-    echo -e "${GREEN}Remmina already installed${CEXIT}"
+    echo -e "${GREEN}Adapta already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Adapta${CEXIT}"
     sudo add-apt-repository ppa:tista/adapta
