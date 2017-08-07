@@ -135,6 +135,17 @@ else
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
 fi
 
+# Install Adapta theme
+if ls /etc/apt/sources.list.d/tista-ubuntu-adapta-xenial.list > /dev/null 2>&1; then
+    echo -e "${GREEN}Remmina already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Adapta${CEXIT}"
+    sudo add-apt-repository ppa:tista/adapta
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq  adapta-*
+    echo -e "${GREEN}Adapta is now installed${CEXIT}"
+fi
+
 # Need to adjust this so it only installs via PPA if Ubuntu version < 16.10 otherwise use apt. Using install_package functio for now while I test on 17.04 zesty
 
 # Arc theme install
