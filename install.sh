@@ -225,5 +225,5 @@ else
 fi
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
-${YELLOW}Remember to manually switch to the arc theme and select your fonts! \
+${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
 Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
