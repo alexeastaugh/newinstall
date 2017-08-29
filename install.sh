@@ -98,6 +98,11 @@ function apply_dots() {
 clone_dots
 apply_dots
 
+# Install ChedDK
+# Install Ruby
+# Install Vagrant
+# Install VirtualBox
+
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
     echo -e "${GREEN}Monaco fonts are already installed${CEXIT}"
