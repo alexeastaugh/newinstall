@@ -72,6 +72,7 @@ install_package 'mpv'
 install_package 'tree'
 install_package 'nmap'
 install_package 'arc-theme'
+install_package 'vagrant'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -99,8 +100,6 @@ clone_dots
 apply_dots
 
 # Install ChedDK
-# Install Ruby
-# Install Vagrant
 # Install VirtualBox
 
 # Install Monaco fonts
