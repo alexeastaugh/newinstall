@@ -6,7 +6,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 CEXIT='\033[0m'
 
-RELEASE=`lsb_release -c | sed -e 's/Codename:\s//'`
+RELEASE=`lsb_release -cs`
 ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
