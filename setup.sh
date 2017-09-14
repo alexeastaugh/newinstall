@@ -140,7 +140,7 @@ else
 fi
 
 # Install Adapta theme
-if ls /etc/apt/sources.list.d/tista-ubuntu-adapta-xenial.list > /dev/null 2>&1; then
+if ls /etc/apt/sources.list.d/tista-ubuntu-adapta-* > /dev/null 2>&1; then
   echo -e "${GREEN}Adapta already installed${CEXIT}"
 else
   echo -e "${YELLOW}Installing Adapta${CEXIT}"
