@@ -17,12 +17,12 @@ sudo apt update >/dev/null 2>&1
 # SSH check and setup
 function ssh_setup() {
     if [ -f /home/$(whoami)/.ssh/config ]; then
-    sudo find /home/$(whoami)/.ssh -type d -exec chmod 700 {} \;
-    sudo find /home/$(whoami)/.ssh -type f -exec chmod 600 {} \;
-    echo -e "\n${GREEN}ssh keys are installed and have correct permissions\n${CEXIT}"
+        sudo find /home/$(whoami)/.ssh -type d -exec chmod 700 {} \;
+        sudo find /home/$(whoami)/.ssh -type f -exec chmod 600 {} \;
+        echo -e "\n${GREEN}ssh keys are installed and have correct permissions\n${CEXIT}"
     else
-    echo -e "\n${RED}Please copy your ssh keys and config file to the .ssh dir${CEXIT}"
-    exit 1
+        echo -e "\n${RED}Please copy your ssh keys and config file to the .ssh dir${CEXIT}"
+        exit 1
     fi
 }
 
@@ -101,7 +101,6 @@ clone_dots
 apply_dots
 
 # Install ChedDK
-# Install VirtualBox
 
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
