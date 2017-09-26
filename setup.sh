@@ -7,7 +7,6 @@ RED='\033[0;31m'
 CEXIT='\033[0m'
 
 RELEASE=`lsb_release -cs`
-ARCFILE="/etc/apt/sources.list.d/arc-theme.list"
 LOG=/tmp/new_install.log
 
 # Update repos
