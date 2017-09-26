@@ -73,6 +73,7 @@ install_package 'tree'
 install_package 'nmap'
 install_package 'arc-theme'
 install_package 'vagrant'
+install_package 'clusterssh'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
