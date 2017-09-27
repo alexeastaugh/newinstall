@@ -74,6 +74,7 @@ install_package 'nmap'
 install_package 'arc-theme'
 install_package 'vagrant'
 install_package 'clusterssh'
+install_package 'python3-setuptools'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -100,7 +101,8 @@ function apply_dots() {
 clone_dots
 apply_dots
 
-# Install ChedDK
+# Install pip3
+sudo easy_install pip >/dev/null 2>&1
 
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
@@ -231,3 +233,5 @@ fi
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
 Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
+
+echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal \n${CEXIT}"
