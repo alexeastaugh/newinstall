@@ -102,7 +102,7 @@ clone_dots
 apply_dots
 
 # Install pip3
-sudo easy_install pip >/dev/null 2>&1
+sudo easy_install pip >> ${LOG} 2>&1
 
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
