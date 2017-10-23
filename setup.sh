@@ -101,9 +101,6 @@ function apply_dots() {
 clone_dots
 apply_dots
 
-# Install pip3
-sudo easy_install pip >> ${LOG} 2>&1
-
 # Install Monaco fonts
 if [ -d "/usr/share/fonts/truetype/ttf-monaco" ]; then
     echo -e "${GREEN}Monaco fonts are already installed${CEXIT}"
@@ -197,14 +194,14 @@ else
 fi
 
 # Install youtube-dl
-if [ -f /usr/local/bin/youtube-dl ]; then
-    echo -e "${GREEN}youtube-dl is already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing youtube-dl${CEXIT}"
-    sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
-    sudo chmod a+rx /usr/local/bin/youtube-dl
-    echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
-fi
+#if [ -f /usr/local/bin/youtube-dl ]; then
+#    echo -e "${GREEN}youtube-dl is already installed${CEXIT}"
+#else
+#    echo -e "${YELLOW}Installing youtube-dl${CEXIT}"
+#    sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+#    sudo chmod a+rx /usr/local/bin/youtube-dl
+#    echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
+#fi
 
 # Install Virtualbox
 if [ -f /usr/bin/virtualbox ]; then
