@@ -121,7 +121,8 @@ else
     echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
     sudo add-apt-repository ppa:numix/ppa
     sudo apt-get update >/dev/null 2>&1
-    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square numix-folders
+    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square 
+    sudo apt-get -qq install numix-folders
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi
 
