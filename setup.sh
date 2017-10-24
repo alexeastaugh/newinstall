@@ -73,7 +73,7 @@ install_package 'tree'
 install_package 'nmap'
 install_package 'arc-theme'
 install_package 'vagrant'
-install_package 'clusterssh'
+install_package 'tilix'
 install_package 'python3-setuptools'
 
 # Clone dotfiles repo and setup .gitconfig
@@ -121,7 +121,7 @@ else
     echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
     sudo add-apt-repository ppa:numix/ppa
     sudo apt-get update >/dev/null 2>&1
-    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-folders numix-icon-theme-square
+    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square numix-folders
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi
 
@@ -183,6 +183,8 @@ else
     sudo rm -f /home/$(whoami)/Downloads/google-chrome-*.deb
     echo -e "${GREEN}Google Chrome is now installed${CEXIT}"
 fi
+
+install_package 'chrome-gnome-shell'
 
 # Install Dropbox
 if [ -f ~/.dropbox-dist/dropboxd ]; then
