@@ -75,6 +75,7 @@ install_package 'arc-theme'
 install_package 'vagrant'
 install_package 'tilix'
 install_package 'python3-setuptools'
+install_package 'python3-pip'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
