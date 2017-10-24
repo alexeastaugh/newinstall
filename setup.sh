@@ -56,6 +56,7 @@ function install_package() {
 }
 
 install_package 'vim'
+install_package 'curl'
 install_package 'stow'
 install_package 'git'
 install_package 'htop'
