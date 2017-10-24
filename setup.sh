@@ -233,4 +233,4 @@ echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
 Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
 
-echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal \n${CEXIT}"
+echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal - \"sudo pip3 install pywal\" \n${CEXIT}"
