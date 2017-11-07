@@ -7,6 +7,7 @@ RED='\033[0;31m'
 CEXIT='\033[0m'
 
 RELEASE=`lsb_release -cs`
+VBRELEASE="Zesty"
 LOG=/tmp/new_install.log
 
 # Update repos
@@ -213,7 +214,7 @@ if [ -f /usr/bin/virtualbox ]; then
     echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing VirtualBox${CEXIT}"
-    echo "deb http://download.virtualbox.org/virtualbox/debian ${RELEASE} contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
+    echo "deb http://download.virtualbox.org/virtualbox/debian ${VBRELEASE} contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
     sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
     sudo apt-get update >/dev/null 2>&1
@@ -236,4 +237,4 @@ echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
 Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
 
-echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal - \"sudo pip3 install pywal\" \n${CEXIT}"
+echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal - \"pip3 install pywal\" \n${CEXIT}"
