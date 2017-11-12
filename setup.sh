@@ -133,7 +133,7 @@ if [ -x /usr/share/spotify/spotify ]; then
     echo -e "${GREEN}Spotify already installed${CEXIT}"
 else
     echo -e "${YELLOW}Installing Spotify${CEXIT}"
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
     sudo echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
     sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install spotify-client
