@@ -232,8 +232,12 @@ else
     echo -e "${GREEN}Atom is now installed${CEXIT}"
 fi
 
-echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n \
-${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
-Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
+echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
+${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
 
-echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal - \"sudo pip3 install pywal\" \n${CEXIT}"
+echo -e "${YELLOW}Manual installs:\n 
+ChefDK - \"https://downloads.chef.io/chefdk\"\n\
+ZSH - \"sudo apt install zsh\"\n\
+OHMYZSH - \"http://ohmyz.sh/\"\n\
+powerline-fonts - \"https://github.com/powerline/fonts\"\n\
+pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
