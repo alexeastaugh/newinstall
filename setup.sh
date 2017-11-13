@@ -208,18 +208,18 @@ fi
 #    echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
 #fi
 
-# Install Virtualbox
-if [ -f /usr/bin/virtualbox ]; then
-    echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing VirtualBox${CEXIT}"
-    echo "deb http://download.virtualbox.org/virtualbox/debian ${RELEASE} contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
-    sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-    sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install -qq virtualbox-5.1
-    echo -e "${GREEN}VirtualBox is now installed${CEXIT}"
-fi
+# Install Virtualbox # Disabled until an Artful PPA is available
+#if [ -f /usr/bin/virtualbox ]; then
+#    echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
+#else
+#    echo -e "${YELLOW}Installing VirtualBox${CEXIT}"
+#    echo "deb http://download.virtualbox.org/virtualbox/debian ${RELEASE} contrib" | sudo tee --append /etc/apt/sources.list.d/virtualbox.list
+#    sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+#    sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+#    sudo apt-get update >/dev/null 2>&1
+#    sudo apt-get install -qq virtualbox-5.1
+#    echo -e "${GREEN}VirtualBox is now installed${CEXIT}"
+#fi
 
 # Install Atom editor
 if [ -f /usr/bin/atom ]; then
@@ -232,8 +232,8 @@ else
     echo -e "${GREEN}Atom is now installed${CEXIT}"
 fi
 
-echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
+echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n \
 ${YELLOW}Remember to manually switch to your custom theme and select your fonts! \
-Also you need to activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
+Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
 
 echo -e "${RED}Need to install ChefDK, Powerline, powerline fonts and pywal - \"sudo pip3 install pywal\" \n${CEXIT}"
