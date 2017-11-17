@@ -241,4 +241,5 @@ ZSH - \"sudo apt install zsh\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
+Peek - \"https://github.com/phw/peek\"\n\
 pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
