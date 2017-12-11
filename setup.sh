@@ -217,7 +217,7 @@ else
     sudo wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
     sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install -qq virtualbox-5.1
+    sudo apt-get install -qq virtualbox-5.2
     echo -e "${GREEN}VirtualBox is now installed${CEXIT}"
 fi
 
