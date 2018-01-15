@@ -6,7 +6,8 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 CEXIT='\033[0m'
 
-RELEASE=`lsb_release -cs`
+RELEASE=$(lsb_release -cs)
+
 LOG=/tmp/new_install.log
 
 # Update repos
