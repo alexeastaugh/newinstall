@@ -124,7 +124,7 @@ else
     echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
     sudo add-apt-repository ppa:numix/ppa
     sudo apt-get update >/dev/null 2>&1
-    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square 
+    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square
     sudo apt-get -qq install numix-folders
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi
@@ -233,10 +233,21 @@ else
     echo -e "${GREEN}Atom is now installed${CEXIT}"
 fi
 
+# Install ulancher
+if [ -f /usr/bin/ulauncher ]; then
+  echo -e "${GREEN}Ulauncher is already installed${CEXIT}"
+else
+  echo -e "${YELLOW}Installing Ulauncher${CEXIT}"
+  sudo add-apt-repository ppa:agornostal/ulauncher
+  sudo apt-get update >/dev/null 2>&1
+  sudo apt-get install -qq ulauncher
+  echo -e "${GREEN}Ulauncher is now installed${CEXIT}"
+fi
+
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
 ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${CEXIT}"
 
-echo -e "${YELLOW}Manual installs:\n 
+echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
 ZSH - \"sudo apt install zsh\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
