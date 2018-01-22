@@ -199,16 +199,6 @@ else
     echo -e "${GREEN}Dropbox is now installed${CEXIT}"
 fi
 
-# Install youtube-dl
-#if [ -f /usr/local/bin/youtube-dl ]; then
-#    echo -e "${GREEN}youtube-dl is already installed${CEXIT}"
-#else
-#    echo -e "${YELLOW}Installing youtube-dl${CEXIT}"
-#    sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
-#    sudo chmod a+rx /usr/local/bin/youtube-dl
-#    echo -e "${GREEN}youtube-dl is now installed${CEXIT}"
-#fi
-
 # Install Virtualbox # Disabled until an Artful PPA is available
 if [ -f /usr/bin/virtualbox ]; then
     echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
@@ -254,5 +244,4 @@ OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
 Peek - \"https://github.com/phw/peek\"\n\
-Ulauncher - \"https://ulauncher.io\"\n\
 pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
