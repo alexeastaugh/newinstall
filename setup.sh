@@ -188,6 +188,7 @@ else
     echo -e "${GREEN}Google Chrome is now installed${CEXIT}"
 fi
 
+# This is needed for shell extensions and has to be done after chrome is installed.
 install_package 'chrome-gnome-shell'
 
 # Install Dropbox
