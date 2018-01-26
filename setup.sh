@@ -34,18 +34,6 @@ read -p "Please enter your email address: " EMAILADDRESS
 echo -e "\n${GREEN}Hello there ${NAME}, shall we begin....\n${CEXIT}"
 sleep 2
 
-# Create projects dir
-function project_dir() {
-    if [ -d /home/$(whoami)/projects ]; then
-        echo -e "${GREEN}Projects dir already created${CEXIT}"
-    else
-        echo -e "${YELLOW}Creating projects dir${CEXIT}"
-        mkdir -p /home/${USER}/projects >> ${LOG} 2>&1
-    fi
-}
-
-project_dir
-
 # Install apt packages
 function install_package() {
     if dpkg-query --list | sed 's/ii  //g' | grep -m1 -q ^"$1"; then
@@ -78,6 +66,7 @@ install_package 'vagrant'
 install_package 'tilix'
 install_package 'python3-setuptools'
 install_package 'python3-pip'
+install_package 'zsh'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -240,7 +229,6 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
-ZSH - \"sudo apt install zsh\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
