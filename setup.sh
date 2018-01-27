@@ -67,6 +67,7 @@ install_package 'tilix'
 install_package 'python3-setuptools'
 install_package 'python3-pip'
 install_package 'zsh'
+install_package 'rxvt-unicode'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
