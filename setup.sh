@@ -69,6 +69,23 @@ install_package 'python3-pip'
 install_package 'zsh'
 install_package 'rxvt-unicode'
 
+# Install snap packages
+function install_snap() {
+    if snap list | awk -F ' ' '{print $1}'| grep -m1 -q ^"$1"; then
+        echo -e "${GREEN}$1 is already installed${CEXIT}"
+    else
+        echo -e "${YELLOW}Installing $1${CEXIT}"
+        sudo snap install "$@" --classic >> ${LOG} 2>&1
+    fi
+}
+
+#install_snap 'atom'
+#install_snap 'spotify'
+#install_snap 'get-iplayer'
+#install_snap 'vlc'
+#install_snap 'slack'
+#install_snap 'remmina'
+
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
     if [ ! -d /home/$(whoami)/dotfiles ]; then
