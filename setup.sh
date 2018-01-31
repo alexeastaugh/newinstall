@@ -68,6 +68,7 @@ install_package 'python3-setuptools'
 install_package 'python3-pip'
 install_package 'zsh'
 install_package 'rxvt-unicode'
+install_package 'jq'
 
 # Install snap packages
 function install_snap() {
@@ -247,6 +248,7 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
+Docker - \"https://www.docker.com\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
