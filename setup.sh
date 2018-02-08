@@ -70,6 +70,7 @@ install_package 'zsh'
 install_package 'rxvt-unicode'
 install_package 'jq'
 install_package 'fonts-powerline'
+install_package 'imagemagick'
 
 # Install snap packages
 function install_snap() {
@@ -209,7 +210,7 @@ else
     echo -e "${GREEN}Dropbox is now installed${CEXIT}"
 fi
 
-# Install Virtualbox # Disabled until an Artful PPA is available
+# Install Virtualbox
 if [ -f /usr/bin/virtualbox ]; then
     echo -e "${GREEN}VirtualBox is already installed${CEXIT}"
 else
@@ -235,13 +236,40 @@ fi
 
 # Install ulancher
 if [ -f /usr/bin/ulauncher ]; then
-  echo -e "${GREEN}Ulauncher is already installed${CEXIT}"
+    echo -e "${GREEN}Ulauncher is already installed${CEXIT}"
 else
-  echo -e "${YELLOW}Installing Ulauncher${CEXIT}"
-  sudo add-apt-repository ppa:agornostal/ulauncher
-  sudo apt-get update >/dev/null 2>&1
-  sudo apt-get install -qq ulauncher
-  echo -e "${GREEN}Ulauncher is now installed${CEXIT}"
+    echo -e "${YELLOW}Installing Ulauncher${CEXIT}"
+    sudo add-apt-repository ppa:agornostal/ulauncher
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq ulauncher
+    echo -e "${GREEN}Ulauncher is now installed${CEXIT}"
+fi
+
+# Install peek
+if [ -f /usr/bin/peek ]; then
+    echo -e "${GREEN}Peek is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Peek${CEXIT}"
+    sudo add-apt-repository ppa:peek-developers/stable
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq peek
+    echo -e "${GREEN}Peek is now installed${CEXIT}"
+fi
+
+# Install docker
+if [ -f /usr/bin/docker ]; then
+    echo -e "${GREEN}Docker is already installed${CEXIT}"
+else
+    echo -e "${YELLOW}Installing Docker${CEXIT}"
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+    sudo apt-get update >/dev/null 2>&1
+    sudo apt-get install -qq docker-ce
+    sudo usermod -aG docker ${USER}
+    echo -e "${GREEN}Docker is now installed${CEXIT}"
 fi
 
 echo -e "\n${GREEN}${USER} your laptop is now setup!${CEXIT}\n\
@@ -249,9 +277,7 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
-Docker - \"https://www.docker.com\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
-Peek - \"https://github.com/phw/peek\"\n\
 pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
