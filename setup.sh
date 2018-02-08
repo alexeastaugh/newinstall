@@ -69,6 +69,7 @@ install_package 'python3-pip'
 install_package 'zsh'
 install_package 'rxvt-unicode'
 install_package 'jq'
+install_package 'fonts-powerline'
 
 # Install snap packages
 function install_snap() {
