@@ -71,6 +71,7 @@ install_package 'rxvt-unicode-256color'
 install_package 'jq'
 install_package 'fonts-powerline'
 install_package 'imagemagick'
+install_package 'ranger'
 
 # Install snap packages
 function install_snap() {
