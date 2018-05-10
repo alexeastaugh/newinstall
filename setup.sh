@@ -67,11 +67,9 @@ install_package 'tilix'
 install_package 'python3-setuptools'
 install_package 'python3-pip'
 install_package 'zsh'
-install_package 'rxvt-unicode-256color'
 install_package 'jq'
 install_package 'fonts-powerline'
 install_package 'imagemagick'
-install_package 'ranger'
 
 # Install snap packages
 function install_snap() {
@@ -83,12 +81,7 @@ function install_snap() {
     fi
 }
 
-#install_snap 'atom'
 #install_snap 'spotify'
-#install_snap 'get-iplayer'
-#install_snap 'vlc'
-#install_snap 'slack'
-#install_snap 'remmina'
 
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
@@ -136,7 +129,6 @@ else
     sudo add-apt-repository ppa:numix/ppa
     sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square
-    sudo apt-get -qq install numix-folders
     echo -e "${GREEN}Numix is now installed${CEXIT}"
 fi
 
@@ -150,28 +142,6 @@ else
     sudo apt-get update >/dev/null 2>&1
     sudo apt-get -qq install spotify-client
     echo -e "${GREEN}Spotify is now installed${CEXIT}"
-fi
-
-# Install Adapta theme
-if ls /etc/apt/sources.list.d/tista-ubuntu-adapta-* > /dev/null 2>&1; then
-    echo -e "${GREEN}Adapta already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing Adapta${CEXIT}"
-    sudo add-apt-repository ppa:tista/adapta
-    sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install -qq  adapta-*
-    echo -e "${GREEN}Adapta is now installed${CEXIT}"
-fi
-
-# Remmina install
-if [ -f "/usr/bin/remmina" ]; then
-    echo -e "${GREEN}Remmina already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing Remmina${CEXIT}"
-    sudo add-apt-repository ppa:remmina-ppa-team/remmina-next
-    sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install -qq  remmina
-    echo -e "${GREEN}Remmina is now installed${CEXIT}"
 fi
 
 # Etcher
@@ -278,6 +248,8 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
+Vagrant - \
+Terraform - \
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
