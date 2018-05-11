@@ -69,6 +69,7 @@ install_package 'zsh'
 install_package 'jq'
 install_package 'imagemagick'
 install_package 'gnome-tweaks'
+install_package 'fonts-powerline'
 
 # Install snap packages
 function install_snap() {
