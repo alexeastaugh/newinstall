@@ -120,17 +120,6 @@ else
     echo -e "${GREEN}Monaco fonts are now installed. System restart may be required${CEXIT}"
 fi
 
-# Numix theme and icons
-if ls /etc/apt/sources.list.d/numix* > /dev/null 2>&1; then
-    echo -e "${GREEN}Numix already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing Numix theme and icons${CEXIT}"
-    sudo add-apt-repository ppa:numix/ppa
-    sudo apt-get update >/dev/null 2>&1
-    sudo apt-get -qq install numix-gtk-theme numix-icon-theme-circle
-    echo -e "${GREEN}Numix is now installed${CEXIT}"
-fi
-
 # Spotify
 if [ -x /usr/share/spotify/spotify ]; then
     echo -e "${GREEN}Spotify already installed${CEXIT}"
@@ -247,7 +236,7 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
-Terraform - \
+Terraform - \"https://www.terraform.io/downloads.html\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
 powerline-fonts - \"https://github.com/powerline/fonts\"\n\
