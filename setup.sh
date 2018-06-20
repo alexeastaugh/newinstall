@@ -70,18 +70,6 @@ install_package 'jq'
 install_package 'imagemagick'
 install_package 'gnome-tweaks'
 
-# Install snap packages
-function install_snap() {
-    if snap list | awk -F ' ' '{print $1}'| grep -m1 -q ^"$1"; then
-        echo -e "${GREEN}$1 is already installed${CEXIT}"
-    else
-        echo -e "${YELLOW}Installing $1${CEXIT}"
-        sudo snap install "$@" --classic >> ${LOG} 2>&1
-    fi
-}
-
-#install_snap 'spotify'
-
 # Clone dotfiles repo and setup .gitconfig
 function clone_dots() {
     if [ ! -d /home/$(whoami)/dotfiles ]; then
@@ -237,7 +225,7 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
 Terraform - \"https://www.terraform.io/downloads.html\"\n\
+Vagrant - \"https://www.vagrantup.com/docs/installation/"\n\
+Ansible - \"https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
-Powerlevel9k - \"https://github.com/bhilburn/powerlevel9k\"\n\
-powerline-fonts - \"https://github.com/powerline/fonts\"\n\
 pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
