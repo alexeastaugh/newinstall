@@ -225,7 +225,7 @@ ${YELLOW}Activate dropbox by running /home/$(whoami)/.dropbox-dist/dropboxd \n${
 echo -e "${YELLOW}Manual installs:\n
 ChefDK - \"https://downloads.chef.io/chefdk\"\n\
 Terraform - \"https://www.terraform.io/downloads.html\"\n\
-Vagrant - \"https://www.vagrantup.com/docs/installation/"\n\
-Ansible - \"https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html"\n\
+Vagrant - \"https://www.vagrantup.com/docs/installation/\"\n\
+Ansible - \"https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html\"\n\
 OHMYZSH - \"http://ohmyz.sh/\"\n\
 pywal - \"sudo pip3 install pywal\"${CEXIT}\n"
