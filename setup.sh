@@ -169,17 +169,6 @@ else
     echo -e "${GREEN}VirtualBox is now installed${CEXIT}"
 fi
 
-# Install Atom editor
-if [ -f /usr/bin/atom ]; then
-    echo -e "${GREEN}Atom is already installed${CEXIT}"
-else
-    echo -e "${YELLOW}Installing Atom${CEXIT}"
-    sudo add-apt-repository ppa:webupd8team/atom
-    sudo apt-get update >/dev/null 2>&1
-    sudo apt-get install -qq atom
-    echo -e "${GREEN}Atom is now installed${CEXIT}"
-fi
-
 # Install ulancher
 if [ -f /usr/bin/ulauncher ]; then
     echo -e "${GREEN}Ulauncher is already installed${CEXIT}"
